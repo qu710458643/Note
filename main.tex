@@ -1,0 +1,89 @@
+% !TeX root = ./main.tex
+\documentclass{ctexbook}
+\usepackage{hyperref}
+\usepackage{ctex}
+\usepackage{color}
+\usepackage{chapterbib}
+% 下面定义图片路径
+\usepackage{graphicx} %插入图片的宏包
+\usepackage{float} %设置图片浮动位置的宏包
+\usepackage{subfigure} %插入多图时用子图显示的宏包
+\graphicspath{{image/}{../image/}}
+\usepackage{subfiles}
+\usepackage{blindtext}
+\usepackage{makeidx}
+% 设置参考文献引用
+\usepackage{cite}
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}} % 设置参考文献序号格式
+\bibliographystyle{plain}
+% 设置标题
+\usepackage{titlesec}
+\newfontfamily\sectionef{Times New Roman} % 设置Times New Roman字体
+\newCJKfontfamily\sectioncf{STXihei} % 设置黑体
+\titleformat*{\subsection}{\zihao{4}\heiti\sectionef}	
+% 插入代码
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{ %
+  language=Octave,                % the language of the code
+  basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)}{{}},            % if you want to add LaTeX within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+\begin{document}
+% 文章标题部分
+\author{屈金山}
+\date{\today}
+\title{学习笔记}
+\maketitle
+% 前言部分
+\frontmatter
+\subfile{src/frontmat.tex}
+% 目录部分：包含内容目录，图片和表格目录
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+% 正文部分
+\mainmatter
+\setcounter{page}{1}
+\part*{基础知识}
+\subfile{src/cmakeprime}
+\subfile{src/opencv}
+\subfile{src/latexlearning}
+\part*{进阶提升}
+\subfile{src/pythonscrapy}
+\part*{高级应用}
+
+
+% 尾言部分
+\backmatter
+%附录部分
+\appendix
+\subfile{src/backmatter}
+这里是后记
+% 参考文献
+\subfile{src/reference}
+\end{document}
